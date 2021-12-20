@@ -38,7 +38,7 @@
 		"url": "git+https://github.com/craigrileyuk/laravel-mix-ziggy-watch.git"
 	},
 	"peerDependencies": {
-		"chalk": ">=4.0.0",
+		"chalk": "^4.0.0",
 		"laravel-mix": ">=6.0.0"
 	}
 }
