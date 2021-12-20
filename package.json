@@ -1,0 +1,44 @@
+{
+	"name": "laravel-mix-ziggy-watch",
+	"version": "1.0.0",
+	"description": "Laravel Mix extension that automatically compiles your Ziggy routes. Features built in watch mode and user configuration.",
+	"main": "src/index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [
+		"laravel",
+		"mix",
+		"ziggy",
+		"routes",
+		"watch",
+		"watcher",
+		"routing",
+		"artisan",
+		"navigation"
+	],
+	"author": {
+		"name": "Craig Riley",
+		"email": "hello@craigriley.uk",
+		"url": "https://craigriley.uk"
+	},
+	"funding": [
+		{
+			"type": "github",
+			"url": "https://github.com/sponsors/craigrileyuk/"
+		}
+	],
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/craigrileyuk/laravel-mix-ziggy-watch/issues"
+	},
+	"homepage": "https://github.com/craigrileyuk/laravel-mix-ziggy-watch#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/craigrileyuk/laravel-mix-ziggy-watch.git"
+	},
+	"peerDependencies": {
+		"chalk": ">=4.0.0",
+		"laravel-mix": ">=6.0.0"
+	}
+}
