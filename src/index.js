@@ -17,13 +17,23 @@ class ZiggyWatch {
     this.include = config.include;
     this.exclude = config.exclude;
     this.output = config.output ?? "";
+    this.baseUrl = config.baseUrl;
     this.production = config.production ?? true;
     this.development = config.development ?? true;
+  }
+
+  replaceBaseUrl(routes) {
+    return routes.replace(
+      /("url"\s*?:\s*?")(.*?)(")/,
+      "$1" + this.baseUrl + "$3"
+    );
   }
 
   filterRoutes() {
     try {
       let routes = fs.readFileSync(this.output, { encoding: "utf8" });
+      if (typeof this.baseUrl !== "undefined")
+        routes = this.replaceBaseUrl(routes);
       const Ziggy = JSON.parse(routes.match(/(?:const Ziggy = )({.*})/).pop());
       Ziggy.routes = Object.fromEntries(
         Object.entries(Ziggy.routes).filter(([route, routeObject]) => {
