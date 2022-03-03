@@ -51,7 +51,7 @@ class ZiggyWatch {
         })
       );
       const content = `const Ziggy = ${JSON.stringify(Ziggy)};
-				
+
 if (typeof window !== 'undefined' && typeof window.Ziggy !== 'undefined') {
 Object.assign(Ziggy.routes, window.Ziggy.routes);
 }
@@ -73,14 +73,26 @@ export { Ziggy };`;
       exec(
         `php artisan ziggy:generate ${this.output}`,
         (error, stdout, stderr) => {
-          if (error) {
-            throw new Error(error);
+          if (error || stderr) {
+            if (fs.existsSync(this.output)) {
+              console.log(
+                `${chalk.white.bgRed.bold(
+                  "Ziggy Watch: "
+                )} Error building routes file. Using previous build.`
+              );
+              console.log(error || stderr);
+            } else {
+              console.log(
+                `${chalk.white.bgRed.bold(
+                  "Ziggy Watch: "
+                )} Error building routes file. No previous routes build. Aborting.`
+              );
+              throw new Error(error);
+            }
           }
           if (this.exclude || this.include) this.filterRoutes();
           if (stdout)
             console.log(`${chalk.blue.bold("Ziggy Watch")}: ${stdout}`);
-          if (stderr)
-            console.log(`${chalk.white.bgRed.bold("Ziggy Watch")} ${stderr}`);
         }
       );
 
